@@ -7,44 +7,56 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const login = async () => {
     setError("");
     try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      onLogin(result.user);
-    } catch (err) {
-      setError("Invalid email or password");
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      onLogin(res.user);
+    } catch {
+      setError("This space is only for us.");
     }
   };
 
   return (
-    <div style={{ padding: "40px", maxWidth: "400px", margin: "auto" }}>
-      <h2>Private Memory Log</h2>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div className="login-card">
+        <h2>Private Memory Log</h2>
+        <p>A space that belongs only to us</p>
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ width: "100%", marginBottom: "10px" }}
-      />
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", marginBottom: "10px" }}
-      />
+        <div style={{ height: "14px" }} />
 
-      <button onClick={handleLogin} style={{ width: "100%" }}>
-        Enter
-      </button>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        <div style={{ height: "24px" }} />
+
+        <button onClick={login} style={{ width: "100%" }}>
+          Enter
+        </button>
+
+        {error && (
+          <p style={{ color: "#ff6ec7", marginTop: "16px" }}>
+            {error}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
