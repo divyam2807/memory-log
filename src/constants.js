@@ -1,4 +1,4 @@
 export const USER_NAMES = {
-  "dv101239@email.com": "Divyam",
+  "dv101239@gmail.com": "Divyam",
   "kratikasinghchauhandv@gmail.com": "Kratika",
 };

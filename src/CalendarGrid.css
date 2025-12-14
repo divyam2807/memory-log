@@ -1,0 +1,40 @@
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.calendar-day {
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.calendar-day.has-memory {
+  background: radial-gradient(circle at top, #7b5cff, #ff6ec7);
+  color: white;
+  box-shadow: 0 0 18px rgba(150,100,255,0.6);
+  border: none;
+}
+
+.calendar-day.no-memory {
+  background: transparent;
+}
+
+.calendar-day.today {
+  outline: 2px solid rgba(255,255,255,0.6);
+}
+
+.calendar-day.selected {
+  box-shadow: 0 0 0 2px white inset;
+}
+
+.calendar-day.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
